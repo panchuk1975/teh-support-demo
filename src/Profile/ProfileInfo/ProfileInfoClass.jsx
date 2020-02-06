@@ -4,6 +4,7 @@ import s from "./ProfileInfo.module.css";
 import Preloader from "../../Common/Preloader/Preloader.js";
 import Red_Sea from "../../images/Red_Sea.jpg";
 import ProfileStatusWithHooks from './ProfileStatusWithHooks.jsx';
+import  User_photo from '../../images/YourAvatar.gpj';
 
 
 class ProfileInfo extends Component {
@@ -25,7 +26,9 @@ class ProfileInfo extends Component {
         <img src={Red_Sea} alt = 'fon'/>
       </div>
       <div className={s.descriptionBlock}>
-        <img src={this.props.profile.photos.large} alt="Avatar" />
+        <img className={s.userPhoto} 
+        src={this.props.profile.photos.large || User_photo} 
+        alt="Avatar" />
         <div>
           <ProfileStatusWithHooks status = {this.props.status} 
           updateStatus = {this.props.updateStatus}/>

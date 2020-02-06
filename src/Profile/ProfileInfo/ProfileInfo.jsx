@@ -4,12 +4,12 @@ import s from "./ProfileInfo.module.css";
 import Preloader from "../../Common/Preloader/Preloader.js";
 import Red_Sea from "../../images/Red_Sea.jpg";
 import ProfileStatusWithHooks from './ProfileStatusWithHooks.jsx';
-
+import  YourAvatar from '../../images/YourAvatar.png';
 
 const ProfileInfo = React.memo(({
   profile,
   updateStatus,
-  status
+  statusY
 }) => {
   
   if (!profile) {
@@ -21,7 +21,7 @@ const ProfileInfo = React.memo(({
         <img src={Red_Sea} alt = 'fon'/>
       </div>
       <div className={s.descriptionBlock}>
-        <img src={profile.photos.large} alt="Avatar" />
+        <img src={profile.photos.large || YourAvatar} alt="Avatar" />
         <div>
           <ProfileStatusWithHooks status = {status} 
           updateStatus = {updateStatus}/>

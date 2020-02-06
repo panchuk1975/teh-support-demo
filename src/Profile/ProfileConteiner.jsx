@@ -14,6 +14,7 @@ import MyPostsConteiner from "./MyPosts/MyPostsConteiner";
 
 // - class component has a methods for possibility make request
 class ProfileContainer extends React.Component {
+
   componentDidMount() {
      let userId = this.props.match.params.userId;
      if (!userId) {
@@ -29,6 +30,18 @@ class ProfileContainer extends React.Component {
     //   this.props.setUserProfile(response);
     // });
   }
+    // - for render tu my profile from guests !!!
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        let userId = this.props.match.params.userId;
+        if (!userId) {
+            userId = this.props.userId;}
+        if (!userId) {
+            userId = this.props.history.push('/login');
+            //-faster to login !!!
+        }
+        this.props.getProfileCreator(userId);
+        this.props.getStatus(userId);
+    }
 
   // shouldComponentUpdate(nextProps, nextState){
   //   return nextProps !== this.props || nextState !== this.state;
