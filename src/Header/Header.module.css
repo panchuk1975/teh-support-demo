@@ -1,0 +1,14 @@
+.header {
+    grid-area: h; /* устанавливаем псевдоним"h" для грида"header"*/
+    background-color: lightgreen;
+  }
+  
+  .header img {
+    width: 16.7%;
+  }
+
+  .loginBlock {
+    float: right;
+    margin: 2%;
+  }
+  

@@ -1,0 +1,21 @@
+.posts {
+  background-color: rgb(245, 123, 194);
+  padding: 2%;
+}
+  .item   {
+      color: rgb(0, 128, 0);
+      width: 98%;
+  }
+
+  .button {
+    background-color: gold;
+  }
+/*    
+  .formControl.error input,
+  .formControl.error textarea
+  {
+    border: 3px red solid;
+    background-color: lawngreen;
+  } */
+
+  

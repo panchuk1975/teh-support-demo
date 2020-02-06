@@ -1,0 +1,47 @@
+
+.user {
+  display: grid;
+  grid-template-areas: "a b c"; /*в 1 строке займет header 2 колонки*/
+  grid-template-rows: auto /*1 строка auto*/ 1fr;
+  /*2 строка-фракция остальное*/
+  grid-template-columns: 3fr 4fr /*2 части - фракции*/ 3fr; /*остальное*/
+  /* grid-gap: 10px; */
+  background-color: lightgreen;
+  margin: 2%;
+  align-items: center;
+}
+
+#firstPart {
+  grid-area: a;
+  background-color: lightcoral;
+  margin: 2%;
+  text-align: center;
+}
+
+#fotoStyle {
+  width: 40%;
+  margin: 5%;
+}
+
+#secondPart {
+  grid-area: b;
+  background-color: lightcoral;
+  margin: 2%;
+}
+
+#thirdPart {
+  grid-area: c;
+  background-color: lightcoral;
+  margin: 2%;
+  text-align: center;
+}
+
+.selectedPage{
+  font-weight: bold;
+}
+
+#preloader{
+  position: absolute;
+  width: 50%;
+  margin: 5%;
+}

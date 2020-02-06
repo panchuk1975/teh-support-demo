@@ -1,0 +1,70 @@
+.app-wrapper {
+  width: 90%;
+  margin: 1% auto;
+  display: grid;
+  grid-template-areas:
+    " h h" /*в 1 строке займет header 2 колонки*/
+    "n c"; /*2 строка 1 колонка- NAV, 2 колонка - CONTENT*/
+  grid-template-rows: auto /*1 строка auto*/ 1fr;
+  /*2 строка-фракция остальное*/
+  grid-template-columns: 2fr /*2 части - фракции*/ 10fr; /*остальное*/
+  /* grid-gap: 10px; */
+}
+
+.app-wrapper-content {
+  grid-area: c; /* устанавливаем псевдоним"c" для грида"content"*/
+  background-color: cornflowerblue;
+  padding:2%;
+}
+
+.app-wrapper-content img {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+/* .App {
+  text-align: left;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */

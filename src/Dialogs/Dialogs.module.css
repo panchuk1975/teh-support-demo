@@ -1,0 +1,16 @@
+
+
+.dialogs {
+    display: grid;
+    grid-template-columns: 5fr 5fr;
+}
+
+.dialog_Block {
+    background-color: green; 
+}
+
+.message_Block {
+    background-color: grey;
+}
+
+

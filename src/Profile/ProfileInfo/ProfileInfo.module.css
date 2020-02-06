@@ -1,0 +1,10 @@
+.descriptionBlock {
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+    padding-bottom: 1%;
+}
+
+.descriptionBlock img {
+    width: 90%;
+}
+  

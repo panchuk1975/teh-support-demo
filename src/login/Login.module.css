@@ -1,0 +1,7 @@
+.formSummaryError {
+  color: white;
+  border: 2px solid red;
+  width: 250px;
+  padding: 1%;
+  background-color: red;
+}
