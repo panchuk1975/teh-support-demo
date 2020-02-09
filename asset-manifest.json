@@ -1,33 +1,33 @@
 {
   "files": {
     "main.css": "/teh-support-demo/static/css/main.117fb280.chunk.css",
-    "main.js": "/teh-support-demo/static/js/main.97a28f43.chunk.js",
-    "main.js.map": "/teh-support-demo/static/js/main.97a28f43.chunk.js.map",
-    "runtime-main.js": "/teh-support-demo/static/js/runtime-main.778fc6d8.js",
-    "runtime-main.js.map": "/teh-support-demo/static/js/runtime-main.778fc6d8.js.map",
-    "static/js/2.db70157b.chunk.js": "/teh-support-demo/static/js/2.db70157b.chunk.js",
-    "static/js/2.db70157b.chunk.js.map": "/teh-support-demo/static/js/2.db70157b.chunk.js.map",
+    "main.js": "/teh-support-demo/static/js/main.9bb78c75.chunk.js",
+    "main.js.map": "/teh-support-demo/static/js/main.9bb78c75.chunk.js.map",
+    "runtime-main.js": "/teh-support-demo/static/js/runtime-main.ecd1b387.js",
+    "runtime-main.js.map": "/teh-support-demo/static/js/runtime-main.ecd1b387.js.map",
+    "static/js/2.a0839b8d.chunk.js": "/teh-support-demo/static/js/2.a0839b8d.chunk.js",
+    "static/js/2.a0839b8d.chunk.js.map": "/teh-support-demo/static/js/2.a0839b8d.chunk.js.map",
     "static/css/3.f4f9749b.chunk.css": "/teh-support-demo/static/css/3.f4f9749b.chunk.css",
-    "static/js/3.ba9e090e.chunk.js": "/teh-support-demo/static/js/3.ba9e090e.chunk.js",
-    "static/js/3.ba9e090e.chunk.js.map": "/teh-support-demo/static/js/3.ba9e090e.chunk.js.map",
+    "static/js/3.36a8a3e0.chunk.js": "/teh-support-demo/static/js/3.36a8a3e0.chunk.js",
+    "static/js/3.36a8a3e0.chunk.js.map": "/teh-support-demo/static/js/3.36a8a3e0.chunk.js.map",
     "static/css/4.356e3c83.chunk.css": "/teh-support-demo/static/css/4.356e3c83.chunk.css",
-    "static/js/4.28106ee7.chunk.js": "/teh-support-demo/static/js/4.28106ee7.chunk.js",
-    "static/js/4.28106ee7.chunk.js.map": "/teh-support-demo/static/js/4.28106ee7.chunk.js.map",
+    "static/js/4.3e68b8d0.chunk.js": "/teh-support-demo/static/js/4.3e68b8d0.chunk.js",
+    "static/js/4.3e68b8d0.chunk.js.map": "/teh-support-demo/static/js/4.3e68b8d0.chunk.js.map",
     "index.html": "/teh-support-demo/index.html",
-    "precache-manifest.55cc53087a68e648b79979154d1124b0.js": "/teh-support-demo/precache-manifest.55cc53087a68e648b79979154d1124b0.js",
+    "precache-manifest.0ecb408fe2c7ab05d00cabccb0b4dad7.js": "/teh-support-demo/precache-manifest.0ecb408fe2c7ab05d00cabccb0b4dad7.js",
     "service-worker.js": "/teh-support-demo/service-worker.js",
     "static/css/3.f4f9749b.chunk.css.map": "/teh-support-demo/static/css/3.f4f9749b.chunk.css.map",
     "static/css/4.356e3c83.chunk.css.map": "/teh-support-demo/static/css/4.356e3c83.chunk.css.map",
     "static/css/main.117fb280.chunk.css.map": "/teh-support-demo/static/css/main.117fb280.chunk.css.map",
-    "static/js/2.db70157b.chunk.js.LICENSE.txt": "/teh-support-demo/static/js/2.db70157b.chunk.js.LICENSE.txt",
+    "static/js/2.a0839b8d.chunk.js.LICENSE.txt": "/teh-support-demo/static/js/2.a0839b8d.chunk.js.LICENSE.txt",
     "static/media/Red_Sea.jpg": "/teh-support-demo/static/media/Red_Sea.36a00c6d.jpg",
     "static/media/YourAvatar.png": "/teh-support-demo/static/media/YourAvatar.740763f6.png",
     "static/media/preload.svg": "/teh-support-demo/static/media/preload.7ea39d80.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.778fc6d8.js",
-    "static/js/2.db70157b.chunk.js",
+    "static/js/runtime-main.ecd1b387.js",
+    "static/js/2.a0839b8d.chunk.js",
     "static/css/main.117fb280.chunk.css",
-    "static/js/main.97a28f43.chunk.js"
+    "static/js/main.9bb78c75.chunk.js"
   ]
 }
