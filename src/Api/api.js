@@ -60,6 +60,15 @@ export const profileAPI = {// - pack for all methods to work with endPoints
     updateStatus(status){// - json object
         return instance.put(`profile/status`, {status: status})
         .then(response => response.data); ;
+    },
+    savePhoto(photoFile){
+        const formData = new FormData();
+        formData.append("image", photoFile);
+        return instance.put(`profile/photo`, formData, {
+            headers: {
+                'Content-Type': 'multypart/form-data'
+            }
+        }).then(response => response.data)
     }
 }
 

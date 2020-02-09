@@ -4,6 +4,8 @@ const ADD_POST = "ADD_POST";
 //const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const SET_STATUS = "SET_STATUS";
+const DELETE_POST = "DELETE_POST";
+const SAVE_PHOTO_SUCSESS = "SAVE_PHOTO_SUCSESS";
 
 let initialState = {
   postsData: [{ id: 1, message: "Hi!", likesCount: 5 }],
@@ -36,7 +38,18 @@ export const setStatus = status => ({
   status
 });
 
+export const deletePost = postId => ({
+  type: DELETE_POST,
+  postId
+})
+
+export const savePhotoSucsess = photos => ({
+type: SAVE_PHOTO_SUCSESS,
+  photos
+})
+
 //----------------------THUNK functions---------------------//
+// --------places for asincronic request
 
 //----------------------OLD THEN PROMISE---------------------//
 //- export to UsersConteiner and into CONNECT (getMapToProps)
@@ -66,6 +79,13 @@ export const updateStatus = status => async dispatch => {
   let response = await profileAPI.updateStatus(status);
   if (response.resultCode === 0) {
     dispatch(setStatus(status));
+  }
+};
+
+export const savePhoto = file => async dispatch => {
+  let response = await profileAPI.savePhoto(file);// -send photo to server
+  if (response.resultCode === 0) {
+    dispatch(savePhotoSucsess(response.data.photos));// - get photos from server
   }
 };
 //------------------Reduser----------------------------//
@@ -122,6 +142,18 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         status: action.status
       };
+
+    case DELETE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(p => p.id != action.postId)
+      };
+
+    case SAVE_PHOTO_SUCSESS:
+      return {
+        ...state,
+        profile: {...state.profile, photos: action.photos}
+      }
 
     default:
       return state;

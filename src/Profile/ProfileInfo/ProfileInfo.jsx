@@ -9,12 +9,19 @@ import  YourAvatar from '../../images/YourAvatar.png';
 const ProfileInfo = React.memo(({
   profile,
   updateStatus,
-  statusY
+  status, isOwner, savePhoto
 }) => {
   
   if (!profile) {
     return <Preloader />;
   }
+
+  const onMainPhotoSelected = (event) =>{
+    if (event.target.files.length){
+      savePhoto(event.target.files[0])
+    }
+  }
+
   return (
     <div className={s.content}>
       <div>
@@ -23,7 +30,7 @@ const ProfileInfo = React.memo(({
       <div className={s.descriptionBlock}>
         <img src={profile.photos.large || YourAvatar} alt="Avatar" />
         <div>
-          <ProfileStatusWithHooks status = {status} 
+          <ProfileStatusWithHooks status = {status}
           updateStatus = {updateStatus}/>
           <div>
             <div>Повне ім'я: {profile.fullName}</div>
@@ -34,13 +41,26 @@ const ProfileInfo = React.memo(({
           <div>
             <div>Чим займаюсь: {profile.lookingForAJobDescription}</div>
           </div>
+            <div>
+                <b>Про мене:</b> {profile.aboutMe}
+            </div>
+            <div>
+                <b>Контакти:</b> {Object.keys(profile.contacts).map(key => {
+                    return <Contact contactTitle={key}
+                    contactValue={profile.contacts[key] }/>
+                }
+            )}
+            </div>
           <div>
+            {isOwner && <input type={"file"} onChange={onMainPhotoSelected}/>}
           </div>
-          <div />
         </div>
       </div>
     </div>
   );
 });
 
+const Contact = ({contactTitle, contactValue}) => {
+    return <div><b>{contactTitle}: </b>{contactValue}</div>
+}
 export default ProfileInfo;
