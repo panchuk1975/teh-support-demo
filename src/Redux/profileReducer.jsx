@@ -1,4 +1,5 @@
 import { usersAPI, profileAPI } from "../Api/api.js";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = "ADD_POST";
 //const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
@@ -86,6 +87,22 @@ export const savePhoto = file => async dispatch => {
   let response = await profileAPI.savePhoto(file);// -send photo to server
   if (response.resultCode === 0) {
     dispatch(savePhotoSucsess(response.data.photos));// - get photos from server
+  }
+};
+
+export const saveProfile = profile => async (dispatch, getState) => {
+  const userId = getState().auth.id;
+  let response = await profileAPI.saveProfile(profile);
+  // -send profile to server
+ // console.log(response);
+  if (response.resultCode === 0) {
+    dispatch(getProfileCreator(userId));// - get profile
+  } else {
+    dispatch(stopSubmit("edit-profile",{_error:response.messages[0]}));
+    //dispatch(stopSubmit("edit-profile",{"contacts":
+    //{"fasebook":response.messages[0]}}));
+    return Promise.reject(response.messages[0]);
+    //= waiting wen Promis resolw avter dispatch
   }
 };
 //------------------Reduser----------------------------//

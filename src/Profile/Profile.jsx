@@ -19,7 +19,8 @@ class Profile extends Component {
       status = {this.props.status}
       updateStatus = {this.props.updateStatus}
       isOwner={this.props.isOwner}
-      savePhoto={this.props.savePhoto}/>
+      savePhoto={this.props.savePhoto}
+      saveProfile={this.props.saveProfile}/>
     </div>
   );
 };

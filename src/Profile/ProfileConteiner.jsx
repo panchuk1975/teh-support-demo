@@ -5,7 +5,8 @@ import {
   getProfileCreator,
   getStatus,
   updateStatus,
-    savePhoto
+  savePhoto,
+  saveProfile
 } from "../Redux/profileReducer";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
@@ -15,32 +16,32 @@ import MyPostsConteiner from "./MyPosts/MyPostsConteiner";
 
 // - class component has a methods for possibility make request
 class ProfileContainer extends React.Component {
-
-    refreshProfile(){
-        let userId = this.props.match.params.userId;
-        if (!userId) {
-            userId = this.props.userId;}
-        if (!userId) {
-            userId = this.props.history.push('/login');
-            //-faster to login !!!
-        }
-        this.props.getProfileCreator(userId);
-        this.props.getStatus(userId); // - ajax for status
-        // usersAPI.getProfile(userId).then(response => {
-        //   // - preloading disactive
-        //   this.props.setUserProfile(response);
-        // });
+  refreshProfile() {
+    let userId = this.props.match.params.userId;
+    if (!userId) {
+      userId = this.props.userId;
     }
+    if (!userId) {
+      userId = this.props.history.push("/login");
+      //-faster to login !!!
+    }
+    this.props.getProfileCreator(userId);
+    this.props.getStatus(userId); // - ajax for status
+    // usersAPI.getProfile(userId).then(response => {
+    //   // - preloading disactive
+    //   this.props.setUserProfile(response);
+    // });
+  }
 
   componentDidMount() {
     this.refreshProfile();
   }
-    // - for render tu my profile from guests !!!
-    componentDidUpdate(prevProps, prevState, snapshot) {
-       if(this.props.match.params.userId != prevProps.match.params.userId){
-           this.refreshProfile();
-       }
+  // - for render tu my profile from guests !!!
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (this.props.match.params.userId != prevProps.match.params.userId) {
+      this.refreshProfile();
     }
+  }
 
   // shouldComponentUpdate(nextProps, nextState){
   //   return nextProps !== this.props || nextState !== this.state;
@@ -63,7 +64,8 @@ class ProfileContainer extends React.Component {
           status={this.props.status}
           updateStatus={this.props.updateStatus}
           isOwner={!this.props.match.params.userId} //- if user ID = false
-          savePhoto = {this.props.savePhoto}
+          savePhoto={this.props.savePhoto}
+          saveProfile={this.props.saveProfile}
         />
         <MyPostsConteiner />
       </div>
@@ -98,8 +100,9 @@ export default compose(
     getProfileCreator,
     getStatus,
     updateStatus,
-      savePhoto
+    savePhoto,
+    saveProfile
   }),
   withRouter,
-  withAuthRedirect 
+  withAuthRedirect
 )(ProfileContainer);

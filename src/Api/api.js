@@ -69,8 +69,13 @@ export const profileAPI = {// - pack for all methods to work with endPoints
                 'Content-Type': 'multypart/form-data'
             }
         }).then(response => response.data)
+    },
+    saveProfile(profile){// - json object
+        return instance.put(`profile`, profile)
+        .then(response => response.data); 
     }
 }
+
 
 export const authAPI = {// - pack for all methods to work with endPoints
 
