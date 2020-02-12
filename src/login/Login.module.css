@@ -5,3 +5,7 @@
   padding: 1%;
   background-color: red;
 }
+
+#captcha {
+  width: auto;
+}

@@ -14,7 +14,7 @@ import HeaderConteiner from "./Header/HeaderCoonteiner";
 import Login from "./login/Login";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import {initializedAPP} from './Redux/appReducer.jsx';
 import Preloader from "./Common/Preloader/Preloader";
 import {withSuspense} from './Hoc/withSuspens';
@@ -25,8 +25,20 @@ const DialogsConteiner = React.lazy(() => import('./Dialogs/DialogsConteiner'));
 
 //function App(){Компонента - функция возвращающая разметку JSX (новый тег)
 class App extends Component {
+
+// - method for allert all mistakes
+catchAllUnhandledErrors = (promiseRejectionEvent) => {
+  alert(promiseRejectionEvent);// - need dispatch thunk in reducer and show
+}
+
   componentDidMount() {
-    this.props.initializedAPP(); 
+    this.props.initializedAPP();
+    // - подбисываемся на любую ошибку
+    window.addEventListener("unhandledrejection", this.catchAllUnhandledErrors);
+  }
+  // - при демонтировании сомпоненты необходимо отписаться от ошибки
+  componentWillUnmount(){
+window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
   }
   render(){
     if(this.props.initialized === false){
@@ -46,6 +58,8 @@ class App extends Component {
       <Route path = '/news' component = {News}/>
       <Route path = '/music' component = {Music}/>
       <Route path = '/settings' component = {Settings}/> */}
+      <switch>
+      <Redirect from="/" to="/profile" />
         <Route
           path="/profile/:userId?"
           render={() => {
@@ -81,6 +95,8 @@ class App extends Component {
         <Route path="/users" render={() => <UsersConteiner />} />
         <Route path="/settings" render={() => <Settings />} />
         <Route path="/login" render={() => <Login />} />
+        <Route path="*" render={() => <div>404 NOT FOUND</div>} />
+        </switch>
       </div>
     </div>
     // - common parent

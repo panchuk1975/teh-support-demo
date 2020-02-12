@@ -1,9 +1,10 @@
-import { authAPI } from "../Api/api.js";
+import { authAPI, securityAPI } from "../Api/api.js";
 import { stopSubmit } from "redux-form";
 
 const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
 // - action: if serverDAta came - setUserData
 const IS_FETCHING = "IS_FETCHING";
+const GET_CUPTCHA_URL_SUCSESS = "GET_CUPTCHA_URL_SUCSESS";
 
 //----------------------INITIAL STATE____________________??
 let initialState = {
@@ -12,7 +13,8 @@ let initialState = {
   email: null,
   login: null,
   isAuth: false,
-  rememberMe: null
+  rememberMe: null,
+  captchaUrl: null
   //   isFetching: false // - preloader
 }; // - все прокинуть через mapStateToProps в UsersConteiner !!!!
 
@@ -21,6 +23,11 @@ let initialState = {
 export const setAuthUserData = (id, email, login, isAuth) => ({
   type: SET_AUTH_USER_DATA,
   payload: { id, email, login, isAuth }
+});
+
+export const getCaptchaUrlSucsess = captchaUrl => ({
+  type: GET_CUPTCHA_URL_SUCSESS,
+  payload: { captchaUrl }
 });
 
 // export const setIsFetching = isFetching => ({
@@ -42,6 +49,9 @@ const authReducer = (state = initialState, action) => {
 
     case IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
+
+    case GET_CUPTCHA_URL_SUCSESS:
+      return { ...state, ...action.payload };
 
     default:
       return state;
@@ -65,48 +75,54 @@ const authReducer = (state = initialState, action) => {
 //   };
 // };
 
-//----------------------NEW ASYNC AWAIT---------------------//
-export const authMeCreator = () => async dispatch => {
+//----------------------NEW ASYNC AWAIT THUNK---------------------//
 
-    let response = await authAPI.authMe();// promise wiil be
-    // resolwed and returned like a responce
-      if (response.resultCode === 0) {
-        let { id, login, email } = response.data; // restruction
-        dispatch(setAuthUserData(id, email, login, true));
-      }
+export const authMeCreator = () => async dispatch => {
+  let response = await authAPI.authMe(); // promise wiil be
+  // resolwed and returned like a responce
+  if (response.resultCode === 0) {
+    let { id, login, email } = response.data; // restruction
+    dispatch(setAuthUserData(id, email, login, true));
+  }
 };
 
-
-
-export const login=(email,password,rememberMe)=>async dispatch=>{
-
-    let response = await authAPI.login(email,password,rememberMe);
-
-      if (response.resultCode === 0) {
-        let id = response.data.userId; // restruction
-        dispatch(setAuthUserData(id, email, password, true))
-      } else { 
-        let errorMessage =
-          response.messages.length > 0
-            ? response.messages[0]
-            : "Some error !!!";
-        // - dispatch action creator from redux-form for
-        //stoping form
-        dispatch(
-          stopSubmit("login", {
-            //email:'Email is wrong!'
-            //_error:'Email or password are wrong!'
-            _error: errorMessage
-          })
-        );
-      }
-    };
-
 export const logout = () => async dispatch => {
-    let response = await authAPI.logout();
-      if (response.resultCode === 0) {
-        dispatch(setAuthUserData(null, null, null, false));
-      }
-    };
+  let response = await authAPI.logout();
+  if (response.resultCode === 0) {
+    dispatch(setAuthUserData(null, null, null, false));
+  }
+};
+
+export const login = (email, password, rememberMe, captcha) => async dispatch => {
+  let response = await authAPI.login(email, password, rememberMe, captcha);
+
+  if (response.resultCode === 0) {
+    let id = response.data.userId; // restruction
+    dispatch(setAuthUserData(id, email, password, true));
+  } else { if (response.resultCode === 10) { 
+    dispatch(getCaptchaUrl());
+  }
+    let errorMessage =
+      response.messages.length > 0 ? response.messages[0] 
+      : "Some error !!!";
+    // - dispatch action creator from redux-form for
+    //stoping form
+    dispatch(
+      stopSubmit("login", {
+        //email:'Email is wrong!'
+        //_error:'Email or password are wrong!'
+        _error: errorMessage
+      })
+    );
+  }
+};
+
+export const getCaptchaUrl = () => async dispatch => {
+  const response = await securityAPI.getCaptchaUrl();
+  const captchaUrl = response.url;
+  console.log(captchaUrl);
+  // = let add captchaUrl in to State = null
+    dispatch(getCaptchaUrlSucsess(captchaUrl));
+};
 
 export default authReducer;

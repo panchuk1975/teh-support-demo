@@ -22,7 +22,7 @@ let maxLength40 = maxLengthCreator(40);
 //---------Functional Login component-----------//
 
 //const LoginForm = props => { // make distruktion
-const LoginForm = ({handleSubmit, error})=> {
+const LoginForm = ({handleSubmit, error, captchaUrl})=> {
   //console.log('write');
   return (
     // 1) make e.preventDefault, 2)get all formData and
@@ -68,6 +68,8 @@ const LoginForm = ({handleSubmit, error})=> {
       <div>
         <button>Log on</button>
       </div>
+      {captchaUrl && <img src = {captchaUrl} id = {s.captcha}/>}
+      {captchaUrl && CreateField("Symbols", "captcha", "input", [required, maxLength40], "input")}
     </form>
   );
 };
@@ -83,7 +85,7 @@ const LoginReduxForm = reduxForm({
 
 const Login = props => {
   const onSubmit = formData => {
-    props.login(formData.email, formData.password, formData.rememberMe);
+    props.login(formData.email, formData.password, formData.rememberMe, formData.captcha);
   };
 
   if (props.isAuth) {
@@ -92,14 +94,15 @@ const Login = props => {
   return (
     <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginReduxForm onSubmit={onSubmit} captchaUrl = {props.captchaUrl} />
     </div>
   );
 };
 
 const mapStateToProps = state => ({
   isAuth: state.auth.isAuth,
-  email: state.auth.email
+  email: state.auth.email,
+  captchaUrl: state.auth.captchaUrl
 });
 
 export default connect(mapStateToProps, { login })(Login);
