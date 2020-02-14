@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "./Header";
-import { authMeCreator, login, logout } from "../Redux/authReducer.jsx";
+import { authMeCreator, login, logout } from "../Redux/authReducer.ts";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({

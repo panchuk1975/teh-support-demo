@@ -1,4 +1,5 @@
 import { authAPI, securityAPI } from "../Api/api.js";
+import {isBoolean} from "util";
 import { stopSubmit } from "redux-form";
 
 const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
@@ -6,26 +7,57 @@ const SET_AUTH_USER_DATA = "SET_AUTH_USER_DATA";
 const IS_FETCHING = "IS_FETCHING";
 const GET_CUPTCHA_URL_SUCSESS = "GET_CUPTCHA_URL_SUCSESS";
 
-//----------------------INITIAL STATE____________________??
+//----------------------INITIAL STATE----------------------//
+
+//export type  initialStateType = {
+  //id: number | null
+  //email: string | null
+  //login: string | null
+  //isAuth: boolean
+  //rememberMe: boolean | null
+  //captchaUrl: string | null
+//};
+
 let initialState = {
   // - начальный стейт пользователей
-  id: null,
-  email: null,
-  login: null,
-  isAuth: false,
-  rememberMe: null,
-  captchaUrl: null
+  id: null as number | null,
+  email: null as string | null,
+  login: null as string | null,
+  isAuth: false as boolean,
+  rememberMe: null as boolean | null,
+  captchaUrl: null as string | null
   //   isFetching: false // - preloader
 }; // - все прокинуть через mapStateToProps в UsersConteiner !!!!
 
-// -------------- ACTION CRIATORS FUNCTIONS--------------//
+export type initialStateType = typeof initialState;
 
-export const setAuthUserData = (id, email, login, isAuth) => ({
+// -------------- ACTION CRIATORS FUNCTIONS--------------//
+type SetAuthUserDataActionPayloadType = {
+  id:number | null
+  email:string | null
+  login:string | null
+  isAuth:boolean | null
+}
+type SetAuthUserDataActionType = {
+  type: typeof SET_AUTH_USER_DATA
+  payload: SetAuthUserDataActionPayloadType
+}
+export const setAuthUserData =
+    (id:number | null, email:string | null, login:string | null,
+     isAuth:boolean | null):
+SetAuthUserDataActionType => ({
   type: SET_AUTH_USER_DATA,
   payload: { id, email, login, isAuth }
 });
+//--------------------------------------------------------------//
 
-export const getCaptchaUrlSucsess = captchaUrl => ({
+type getCaptchaUrlSucsessActionType ={
+  type: typeof GET_CUPTCHA_URL_SUCSESS
+  payload: { captchaUrl: string }
+}
+
+export const getCaptchaUrlSucsess = (captchaUrl: string):
+    getCaptchaUrlSucsessActionType => ({
   type: GET_CUPTCHA_URL_SUCSESS,
   payload: { captchaUrl }
 });
@@ -37,7 +69,7 @@ export const getCaptchaUrlSucsess = captchaUrl => ({
 
 //-------------- CHECK STATE ACTION FUNCKTION--------------//
 // -------Add and import authReduser into reduxStore------//
-const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action: any) => {
   // - all Data for changing State allways lay in ACTION property
   switch (action.type) {
     case SET_AUTH_USER_DATA:
@@ -77,7 +109,7 @@ const authReducer = (state = initialState, action) => {
 
 //----------------------NEW ASYNC AWAIT THUNK---------------------//
 
-export const authMeCreator = () => async dispatch => {
+export const authMeCreator = () => async (dispatch: any) => {
   let response = await authAPI.authMe(); // promise wiil be
   // resolwed and returned like a responce
   if (response.resultCode === 0) {
@@ -86,14 +118,15 @@ export const authMeCreator = () => async dispatch => {
   }
 };
 
-export const logout = () => async dispatch => {
+export const logout = () => async (dispatch:any) => {
   let response = await authAPI.logout();
   if (response.resultCode === 0) {
     dispatch(setAuthUserData(null, null, null, false));
   }
 };
 
-export const login = (email, password, rememberMe, captcha) => async dispatch => {
+export const login = (email:string, password:string, rememberMe:boolean,
+                      captcha:string) => async (dispatch: any) => {
   let response = await authAPI.login(email, password, rememberMe, captcha);
 
   if (response.resultCode === 0) {
@@ -117,7 +150,7 @@ export const login = (email, password, rememberMe, captcha) => async dispatch =>
   }
 };
 
-export const getCaptchaUrl = () => async dispatch => {
+export const getCaptchaUrl = () => async (dispatch:any) => {
   const response = await securityAPI.getCaptchaUrl();
   const captchaUrl = response.url;
   console.log(captchaUrl);

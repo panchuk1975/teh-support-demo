@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import {
  // onChangeNewMessage, 
-  addMessage} from '../Redux/dialogsReducer.jsx';
+  addMessage} from '../Redux/dialogsReducer.ts';
 
 // const DialogsConteiner = props => {
 //   return (

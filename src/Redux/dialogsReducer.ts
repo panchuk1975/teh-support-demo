@@ -1,3 +1,13 @@
+type DialogType = {
+  id:number
+  name:string
+}
+
+type MessageType = {
+  id:number
+  message:string
+}
+
 let initialState = {
   //newMessageText: "New Text!",
 
@@ -7,7 +17,7 @@ let initialState = {
     { id: 3, name: "Olga" },
     { id: 4, name: "Volodia" },
     { id: 5, name: "OlgaV" }
-  ],
+  ] as Array <DialogType>,
 
   messagesData: [
     { id: 1, message: "Hi!" },
@@ -15,14 +25,16 @@ let initialState = {
     { id: 3, message: "Hi-Hi!" },
     { id: 4, message: "Ok" },
     { id: 5, message: "OK-Ok" },
-    { id: 6, message: "OK-Ok" }
-  ]
+    { id: 6, message: "OK-Ok" },
+  ] as Array <MessageType>
   //,newMassegeText: 'New Text'
 };
 
-Array.prototype.last = function() {
-  return this[this.length - 1];
-}; // - function for last element
+export type InitialStateType = typeof initialState
+
+//Array.prototype.last = function() {
+ // return this[this.length - 1];
+//}; // - function for last element
 
 //const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const ADD_MESSAGE = 'ADD_MESSAGE';
@@ -34,14 +46,20 @@ const ADD_MESSAGE = 'ADD_MESSAGE';
 //   newText: newMessageText
 // })
 
-export const addMessage = newMessageText => ({
+type addMessageActionType = {
+  type: typeof ADD_MESSAGE
+  newMessageText: string
+}
+
+export const addMessage = (newMessageText:string)
+    :addMessageActionType => ({
   type: ADD_MESSAGE, 
   newMessageText
 })
 
 //---------------REDUSER------------------------//
 
-const dialogsReducer = (state = initialState, action) => {
+const dialogsReducer = (state:InitialStateType = initialState, action:any):InitialStateType => {
   //let stateCopy;
   switch (
     action.type // - change on switch
@@ -81,7 +99,7 @@ const dialogsReducer = (state = initialState, action) => {
         messagesData: [
           ...state.messagesData,
           {
-            id: state.messagesData.last().id + 1,
+            id: state.messagesData.length + 1,
             message: action.newMessageText 
             // from dialogs props.newMassageText in Redux form
             //message: state.newMessageText

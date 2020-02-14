@@ -6,7 +6,7 @@ import { required, maxLengthCreator } from "../utils/validators/validators";
 //   //CheckBox
 // } from "../Common/FormsControls/Forms.js";
 import { connect } from "react-redux";
-import { login } from "../Redux/authReducer";
+import { login } from "../Redux/authReducer.ts";
 import { Redirect } from "react-router-dom";
 import s from "./Login.module.css";
 import {CreateField} from '../Common/FormsControls/Forms';

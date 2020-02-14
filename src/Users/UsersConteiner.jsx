@@ -13,7 +13,7 @@ import {
   getUsersOnPageChanged,
   followCreator,
   unfollowCreator
-} from "../Redux/usersReducer";
+} from "../Redux/usersReducer.ts";
 import Users from "./Users";
 import Preloader from "../Common/Preloader/Preloader.js";
 import withAuthRedirect from "../Hoc/withAuthRedirect.js";

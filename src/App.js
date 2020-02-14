@@ -14,8 +14,8 @@ import HeaderConteiner from "./Header/HeaderCoonteiner";
 import Login from "./login/Login";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { withRouter, Redirect } from "react-router-dom";
-import {initializedAPP} from './Redux/appReducer.jsx';
+import { withRouter, Redirect, Switch } from "react-router-dom";
+import {initializedAPP} from './Redux/appReducer.ts';
 import Preloader from "./Common/Preloader/Preloader";
 import {withSuspense} from './Hoc/withSuspens';
 //import { authMeCreator, login, logout } from "../Redux/authReducer.jsx";
@@ -58,7 +58,7 @@ window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
       <Route path = '/news' component = {News}/>
       <Route path = '/music' component = {Music}/>
       <Route path = '/settings' component = {Settings}/> */}
-      <switch>
+    {/*<switch>*/}
       <Redirect from="/" to="/profile" />
         <Route
           path="/profile/:userId?"
@@ -96,7 +96,7 @@ window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
         <Route path="/settings" render={() => <Settings />} />
         <Route path="/login" render={() => <Login />} />
         <Route path="*" render={() => <div>404 NOT FOUND</div>} />
-        </switch>
+    {/*</switch>*/}
       </div>
     </div>
     // - common parent
