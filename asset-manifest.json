@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/teh-support-demo/static/css/main.0db9ad26.chunk.css",
-    "main.js": "/teh-support-demo/static/js/main.2502ef94.chunk.js",
-    "main.js.map": "/teh-support-demo/static/js/main.2502ef94.chunk.js.map",
-    "runtime-main.js": "/teh-support-demo/static/js/runtime-main.95f3e1ca.js",
-    "runtime-main.js.map": "/teh-support-demo/static/js/runtime-main.95f3e1ca.js.map",
+    "main.js": "/teh-support-demo/static/js/main.11acfe6e.chunk.js",
+    "main.js.map": "/teh-support-demo/static/js/main.11acfe6e.chunk.js.map",
+    "runtime-main.js": "/teh-support-demo/static/js/runtime-main.bc95f267.js",
+    "runtime-main.js.map": "/teh-support-demo/static/js/runtime-main.bc95f267.js.map",
     "static/js/2.049a6b54.chunk.js": "/teh-support-demo/static/js/2.049a6b54.chunk.js",
     "static/js/2.049a6b54.chunk.js.map": "/teh-support-demo/static/js/2.049a6b54.chunk.js.map",
     "static/css/3.f4f9749b.chunk.css": "/teh-support-demo/static/css/3.f4f9749b.chunk.css",
-    "static/js/3.e987dc12.chunk.js": "/teh-support-demo/static/js/3.e987dc12.chunk.js",
-    "static/js/3.e987dc12.chunk.js.map": "/teh-support-demo/static/js/3.e987dc12.chunk.js.map",
+    "static/js/3.7ad3fcb4.chunk.js": "/teh-support-demo/static/js/3.7ad3fcb4.chunk.js",
+    "static/js/3.7ad3fcb4.chunk.js.map": "/teh-support-demo/static/js/3.7ad3fcb4.chunk.js.map",
     "static/css/4.356e3c83.chunk.css": "/teh-support-demo/static/css/4.356e3c83.chunk.css",
-    "static/js/4.402f1be6.chunk.js": "/teh-support-demo/static/js/4.402f1be6.chunk.js",
-    "static/js/4.402f1be6.chunk.js.map": "/teh-support-demo/static/js/4.402f1be6.chunk.js.map",
+    "static/js/4.606ef92e.chunk.js": "/teh-support-demo/static/js/4.606ef92e.chunk.js",
+    "static/js/4.606ef92e.chunk.js.map": "/teh-support-demo/static/js/4.606ef92e.chunk.js.map",
     "index.html": "/teh-support-demo/index.html",
-    "precache-manifest.79746a8bf5a87a68edcb45a6f37d56c3.js": "/teh-support-demo/precache-manifest.79746a8bf5a87a68edcb45a6f37d56c3.js",
+    "precache-manifest.39ca074ae631a50000107b4d130f2bd0.js": "/teh-support-demo/precache-manifest.39ca074ae631a50000107b4d130f2bd0.js",
     "service-worker.js": "/teh-support-demo/service-worker.js",
     "static/css/3.f4f9749b.chunk.css.map": "/teh-support-demo/static/css/3.f4f9749b.chunk.css.map",
     "static/css/4.356e3c83.chunk.css.map": "/teh-support-demo/static/css/4.356e3c83.chunk.css.map",
@@ -25,9 +25,9 @@
     "static/media/preload.svg": "/teh-support-demo/static/media/preload.7ea39d80.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.95f3e1ca.js",
+    "static/js/runtime-main.bc95f267.js",
     "static/js/2.049a6b54.chunk.js",
     "static/css/main.0db9ad26.chunk.css",
-    "static/js/main.2502ef94.chunk.js"
+    "static/js/main.11acfe6e.chunk.js"
   ]
 }
