@@ -1,11 +1,14 @@
 import "./index.css";
 import * as serviceWorker from "./serviceWorker";
-// import rerenderEntireTree from './render';
+//import rerenderEntireTree from './render';
 import React from "react";
 import ReactDOM from "react-dom";
 import store from './Redux/reduxStore';
 import App from "./App";
-import { BrowserRouter, HashRouter } from "react-router-dom";
+import { 
+    BrowserRouter,
+     //HashRouter 
+    } from "react-router-dom";
 //import StoreContext from "./StoreContext";
 //import {Provider} from "./StoreContext";
 import {Provider} from "react-redux";
@@ -14,7 +17,7 @@ import {Provider} from "react-redux";
 
 let rerenderEntireTree = (props) => {
   ReactDOM.render( // - props => getState()
-  <HashRouter>
+  <BrowserRouter>
     {/*<BrowserRouter basename = {process.env.PUBLIC_RL}>
     StoreContext.*/}<Provider /*value*/store = {store}>
       {/* <App state={props} addPost={store.addPost.bind(store)} 
@@ -26,7 +29,7 @@ let rerenderEntireTree = (props) => {
        <App  />
        {/*StoreContext.*/}</Provider>
     {/*</BrowserRouter>*/} 
-    </HashRouter>,//- if not call now we must to bind context
+    </BrowserRouter>,//- if not call now we must to bind context
     document.getElementById("root")// to store object
   );
 };

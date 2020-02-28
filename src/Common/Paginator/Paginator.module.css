@@ -23,7 +23,7 @@
 .pages {
   background-color: lightcoral;
   margin: 2px;
-  padding: 3px;
+  padding: 0px;
 }
 
 .paginator {
@@ -60,7 +60,8 @@
   text-align: center;
 }
 
-.selectedPage{
+.selectedPage {
+  margin: 2px;
   font-weight: bold;
 }
 

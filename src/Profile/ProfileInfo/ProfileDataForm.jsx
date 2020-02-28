@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./ProfileInfo.module.css";
 import {CreateField} from '../../Common/FormsControls/Forms';
 import { reduxForm } from "redux-form";

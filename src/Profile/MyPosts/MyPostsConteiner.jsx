@@ -3,7 +3,7 @@ import "./MyPosts.module.css";
 import MyPosts from "./MyPosts";
 //import StoreContext from "../../StoreContext";
 import { connect } from "react-redux";
-import { addPost, 
+import { addPost, deletePost
  // updateNewPostText, addPostActionCreator
  } from "../../Redux/profileReducer";
 // import { compose } from "redux";
@@ -28,7 +28,7 @@ const mapStateToProps = state => {
 export default 
   connect(mapStateToProps,
     //mapDispatchToProps 
-    { addPost, 
+    { addPost, deletePost
      // updateNewPostText 
     }
     )

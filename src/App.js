@@ -14,12 +14,16 @@ import HeaderConteiner from "./Header/HeaderCoonteiner";
 import Login from "./login/Login";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { withRouter, Redirect, Switch } from "react-router-dom";
+import { withRouter, Redirect, 
+   // Switch 
+} from "react-router-dom";
 import {initializedAPP} from './Redux/appReducer.ts';
 import Preloader from "./Common/Preloader/Preloader";
-import {withSuspense} from './Hoc/withSuspens';
+//import {withSuspense} from './Hoc/withSuspens';
 //import { authMeCreator, login, logout } from "../Redux/authReducer.jsx";
 //import MyPostsConteiner from "./Profile/MyPosts/MyPostsConteiner";
+
+//-----------------Import Lazy Components !!!!!-----------------------//
 const ProfileConteiner = React.lazy(() => import('./Profile/ProfileConteiner'));
 const DialogsConteiner = React.lazy(() => import('./Dialogs/DialogsConteiner'));
 
@@ -64,8 +68,7 @@ window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
           path="/profile/:userId?"
           render={() => {
             return(
-              <React.Suspense 
-              fallback = {<div><Preloader/></div>}>
+              <React.Suspense fallback = {<div><Preloader/></div>}>
             <ProfileConteiner/>
             {/* store = {props.store}
             dispatch = {props.dispatch}
@@ -73,13 +76,26 @@ window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
             updateNewPostText={props.updateNewPostText} */}
           </React.Suspense>
             )
-          }}
+    }}
         />
 
-        <Route
-          path="/dialogs" // - withSuspense - HOC !!!
-          render={withSuspense(DialogsConteiner)}/>
- 
+<Route
+          path="/dialogs"
+          render={() => {
+            return(
+              <React.Suspense fallback = {<div><Preloader/></div>}>
+            <DialogsConteiner/>
+            {/* store = {props.store}
+            dispatch = {props.dispatch}
+            addPost={props.addPost}
+            updateNewPostText={props.updateNewPostText} */}
+          </React.Suspense>
+            )
+    }}
+        />
+
+
+      
             {/* // store = {props.store}
             // dispatch = {props.dispatch}
             // addMessage={props.addMessage}
@@ -88,22 +104,22 @@ window.removeEventListener("unhandledrejection", this.catchAllUnhandledErrors);
             // messages={props.state.messages.messagesData}
             //newMessageText = {props.state.messages.newMessageText}
             //dispatch = {props.dispatch} */}
-           
-           
+
+
         <Route path="/news" render={() => <News />} />
         <Route path="/music" render={() => <Music />} />
-        <Route path="/users" render={() => <UsersConteiner />} />
+        <Route path="/users" render={() => <UsersConteiner pageTitle = {"Samuraj"}/>} />
         <Route path="/settings" render={() => <Settings />} />
         <Route path="/login" render={() => <Login />} />
-        <Route path="*" render={() => <div>404 NOT FOUND</div>} />
+        {/* <Route path="*" render={() => { return <div>404 NOT FOUND</div>}} /> */}
     {/*</switch>*/}
       </div>
     </div>
     // - common parent
     //</BrowserRouter>
-  );
+  )
 }
-};
+}
 
 const MapStateToProps = state => ({
 initialized: state.app.initialized // - props.initialized

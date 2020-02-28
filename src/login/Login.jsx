@@ -1,5 +1,5 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { reduxForm } from "redux-form";
 import { required, maxLengthCreator } from "../utils/validators/validators";
 // import {
 //   ElementInput
@@ -68,7 +68,7 @@ const LoginForm = ({handleSubmit, error, captchaUrl})=> {
       <div>
         <button>Log on</button>
       </div>
-      {captchaUrl && <img src = {captchaUrl} id = {s.captcha}/>}
+      {captchaUrl && <img alt = "captcha" src = {captchaUrl} id = {s.captcha}/>}
       {captchaUrl && CreateField("Symbols", "captcha", "input", [required, maxLength40], "input")}
     </form>
   );

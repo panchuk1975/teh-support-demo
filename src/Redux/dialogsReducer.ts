@@ -39,7 +39,7 @@ export type InitialStateType = typeof initialState
 //const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE_NEW_MESSAGE_TEXT';
 const ADD_MESSAGE = 'ADD_MESSAGE';
 
-//------------Actions CRIETORS---------------//
+//------------Actions CREATORS---------------//
 
 // export const onChangeNewMessage = newMessageText => ({
 //   type: UPDATE_NEW_MESSAGE_TEXT, 
@@ -59,7 +59,8 @@ export const addMessage = (newMessageText:string)
 
 //---------------REDUSER------------------------//
 
-const dialogsReducer = (state:InitialStateType = initialState, action:any):InitialStateType => {
+const dialogsReducer = (state:InitialStateType = initialState, action:any)
+    :InitialStateType => {
   //let stateCopy;
   switch (
     action.type // - change on switch

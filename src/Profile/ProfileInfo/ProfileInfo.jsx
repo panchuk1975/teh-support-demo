@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import s from "./ProfileInfo.module.css";
-import Preloader from "../../Common/Preloader/Preloader.js";
+import Preloader from "../../Common/Preloader/Preloader";
 import Red_Sea from "../../images/Red_Sea.jpg";
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks.jsx";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 import YourAvatar from "../../images/YourAvatar.png";
 import ProfileDataForm from './ProfileDataForm';
 

@@ -3,7 +3,7 @@ import YourAvatar from "../images/User.jpg";
 import s from "./Users.module.css";
 import { NavLink } from "react-router-dom";
 
-let User = ({user, check, unfollowCreator, followCreator}) => {
+let User = ({user, unfollowCreator, followCreator, followingInProgress}) => {
   return (
     <div>
       <div key={user.id} className={s.user}>
@@ -20,8 +20,7 @@ let User = ({user, check, unfollowCreator, followCreator}) => {
           <div>
             {user.followed ? (
               <button // - followingInProgress  ID.array[ ]
-                disabled={
-                  check(user.id) //{props.followingInProgress.some(id=>id===user.id)}
+                disabled={followingInProgress.some(id => id === user.id)  //{props.followingInProgress.some(id=>id===user.id)}
                 }
                 onClick={() => {
                   unfollowCreator(user.id);
@@ -31,8 +30,7 @@ let User = ({user, check, unfollowCreator, followCreator}) => {
               </button>
             ) : (
               <button
-                disabled={
-                  check(user.id) //{props.followingInProgress.some(id=>id===user.id)}
+                disabled={followingInProgress.some(id => id === user.id) //{props.followingInProgress.some(id=>id===user.id)}
                 }
                 onClick={() => {
                   followCreator(user.id);
