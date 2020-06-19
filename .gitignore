@@ -22,8 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .idea
-yarn.lock
-node_modules
+.yarn.lock
+.node_modules
 .gitignore]
-yarn-error.log
-debug/log
+.yarn-error.log
+.debug/log
