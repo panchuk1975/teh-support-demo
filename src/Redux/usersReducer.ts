@@ -1,7 +1,7 @@
 import { AppStateType } from './reduxStore';
 import { usersAPI } from "../Api/api";
 import { updateObjectInArray } from "../Common/Helpers/reduserHelpers";
-import {UserType} from "../Types/types";
+import { UserType } from "../Types/types";
 import { Dispatch } from 'react';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
 
@@ -130,7 +130,7 @@ export const setUsersTotalCount = (totalUsersCount:number)
 });
 
 
-type SetIsFetchingActionType = {
+export type SetIsFetchingActionType = {
   type: typeof IS_FETCHING
   isFetching: boolean
 }
@@ -187,7 +187,7 @@ export const getUsersThunkCreator = (
   dispatch(setUsersTotalCount(response.totalCount));
 };
 
-//-----------Thunk Action Type fron "thunk-redux"--------------//
+//-----------Thunk Action Type from "thunk-redux"--------------//
 
 export const getUsersOnPageChanged = (
   currentPage:number,

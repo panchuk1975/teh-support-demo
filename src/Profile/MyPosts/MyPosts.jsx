@@ -5,7 +5,7 @@ import Post from "./Post/Post";
 import {
    // Field, 
     reduxForm} from "redux-form";
-import {required, maxLengthCreator} from '../../utils/validators/validators.js';
+import {required, maxLengthCreator} from '../../utils/validators/validators';
 //import {Element} from '../../Common/FormsControls/Forms.js';
 import {CreateField} from '../../Common/FormsControls/Forms';
 

@@ -15,18 +15,18 @@ export const Element = Element =>
   );
 };
 
-// // -------------META WAS NOT DISTRUCTION----------------//
-// export const ElementInput = ElementInput => 
-// ({ input, meta, ...props }) => {
-//   const hasError = meta.touched && meta.error;
-//   return (
-//     // - meta.error from validator !!!
-//     <div className={s.formControl + " " + (hasError ? s.error : "")}>
-//       <ElementInput {...input} {...props} />
-//       {hasError && <span>{meta.error}</span>}
-//     </div>
-//   );
-// };
+// -------------META WAS NOT DISTRUCTION----------------//
+export const ElementInput = ElementInput => 
+({ input, meta, ...props }) => {
+  const hasError = meta.touched && meta.error;
+  return (
+    // - meta.error from validator !!!
+    <div className={s.formControl + " " + (hasError ? s.error : "")}>
+      <ElementInput {...input} {...props} />
+      {hasError && <span>{meta.error}</span>}
+    </div>
+  );
+};
 
 export const CreateField = 
 (placeholder, name, component, validators, type, text = "", props = {}) => {

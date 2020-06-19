@@ -220,15 +220,15 @@ type PropsType = MapDispatchToPropsType & MapStateToPropsType & OwnProps;
 //--------------Return MapStateToPropsType without mistakes------------------//
 
 let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
-  return {
-    ...state,
-    users: getUsers(state),
-    pageSize: getPageSize(state),
-    totalUsersCount: getTotalUsersCount(state),
-    currentPage: getCurrentPage(state), //state.usersPage.currentPage,
-    isFetching: getIsFetching(state),
-    followingInProgress: getFollowingInProgress(state)
-  };
+    return {
+        ...state,
+        users: getUsers(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        currentPage: getCurrentPage(state), //state.usersPage.currentPage,
+        isFetching: getIsFetching(state),
+        followingInProgress: getFollowingInProgress(state)
+    };
 };
 
 //---------------Function COMPOSE from REDUX---------------------//
@@ -237,17 +237,17 @@ let mapStateToProps = (state: AppStateType): MapStateToPropsType => {
 //connect (...) => default =>
 
 export default compose(
-  withAuthRedirect,
-  connect(mapStateToProps, 
-    //<MapDispatchToPropsType, MapStateToPropsType, OwnProps>
-    {
-    //follow,
-    //unfollow,
-   // toggleFollowingProgress,
-    getUsersThunkCreator,
-    getUsersOnPageChanged,
-    followCreator,
-    unfollowCreator,
-    setNewPageSize
-  })
+    withAuthRedirect,
+    connect(mapStateToProps,
+        //<MapDispatchToPropsType, MapStateToPropsType, OwnProps>
+        {
+            //follow,
+            //unfollow,
+            // toggleFollowingProgress,
+            getUsersThunkCreator,
+            getUsersOnPageChanged,
+            followCreator,
+            unfollowCreator,
+            setNewPageSize
+        })
 )(UsersConteiner);

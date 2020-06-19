@@ -2,7 +2,7 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import {Field, reduxForm} from "redux-form";
 import {required, maxLengthCreator} from '../utils/validators/validators';
-import {Element} from '../Common/FormsControls/Forms.js';
+import {Element} from '../Common/FormsControls/Forms';
 //import {CreateField} from '../Common/FormsControls/Forms';
 
 let maxLength100 = maxLengthCreator(100);

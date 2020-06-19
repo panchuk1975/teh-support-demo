@@ -1,5 +1,5 @@
 import React from "react";
-import { reduxForm } from "redux-form";
+import { reduxForm, InjectedFormProps } from "redux-form";
 import { required, maxLengthCreator } from "../utils/validators/validators";
 // import {
 //   ElementInput
@@ -8,7 +8,7 @@ import { required, maxLengthCreator } from "../utils/validators/validators";
 import { connect } from "react-redux";
 import { login } from "../Redux/authReducer";
 import { Redirect } from "react-router-dom";
-import s from "Login.module.css";
+import "./Login.module.css";
 import { CreateField } from "../Common/FormsControls/Forms";
 import Preloader from "../Common/Preloader/Preloader.js";
 import { AppStateType } from "../Redux/reduxStore";
@@ -16,15 +16,16 @@ import { AppStateType } from "../Redux/reduxStore";
 let maxLength40 = maxLengthCreator(40);
 
 //let maxLength1 = maxLengthCreator(1);
-
 //const InputElement = ElementInput("input");
-
 //const CheckBoxInput = CheckBox("checkbox");
-
 //---------Functional Login component-----------//
-
 //const LoginForm = props => { // make distruktion
-const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
+
+type LoginFormOwnProps = {
+    captchaUrl: string | null
+}
+
+const LoginForm: React.FC <InjectedFormProps<LoginFormValuesType,  LoginFormOwnProps> & LoginFormOwnProps> = ({ handleSubmit, error, captchaUrl }) => {
   //console.log('write');
   return (
     // 1) make e.preventDefault, 2)get all formData and
@@ -75,12 +76,12 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
         />
         Remember
       </div> */}
-      {error && <div className={s.formSummaryError // - if props.error show error <DIV>
-          }>{error}</div>}
+      {error && <div className="formSummaryError" // - if props.error show error <DIV>
+          >{error}</div>}
       <div>
         <button>Log on</button>
       </div>
-      {captchaUrl && <img alt="captcha" src={captchaUrl} id={s.captcha} />}
+      {captchaUrl && <img alt="captcha" src={captchaUrl} id="captcha" />}
       {captchaUrl &&
         CreateField(
           "Symbols",
@@ -95,16 +96,16 @@ const LoginForm = ({ handleSubmit, error, captchaUrl }) => {
 
 //---------Redux conteiner Login component-----------//
 
-const LoginReduxForm = reduxForm({
+const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps> ({
   // a unique form name
   form: "login"
 })(LoginForm); // - redux special conteiner component
 
 //---------Conteiner Login component-----------//
 type MapStatePropsType = {
-  captchaUrl: string | null;
-  isAuth: boolean;
-  email: string;
+  captchaUrl: string | null
+  isAuth: boolean
+  email: string | null
 };
 
 type MapDispatchPropsType = {
@@ -118,13 +119,20 @@ type MapDispatchPropsType = {
 
 type IsFetching = { isFetching: boolean}
 
+type LoginFormValuesType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string  
+}
+
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType & IsFetching> = ({
   login,
   isFetching,
   isAuth,
   captchaUrl
 }) => {
-  const onSubmit = (formData: any) => {
+  const onSubmit = (formData: LoginFormValuesType) => {
     login(
       formData.email,
       formData.password,
